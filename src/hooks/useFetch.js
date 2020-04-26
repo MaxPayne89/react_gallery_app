@@ -12,7 +12,6 @@ export const useFetch = (url, initialValue) => {
         const response = await axios(url)
         if(response.status === 200){
           setData(response.data)
-
         }
       } catch (error){
         throw error
@@ -21,7 +20,7 @@ export const useFetch = (url, initialValue) => {
       }
     }
     fetch()
-  },[url])
+  },[])
 
-  return {isLoading, data}
+  return data
 }
