@@ -1,9 +1,13 @@
 import React from 'react'
+import {useFetch} from '../hooks/useFetch'
 
 export const Photos = () => {
+  const data = useFetch()
+
   return (
-    <div>
-     <p>There will be some photos and stuff!</p> 
+    <div className="photo-container">
+      <ul>
+      </ul>
     </div>
   )
 }

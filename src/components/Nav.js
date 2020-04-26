@@ -1,11 +1,11 @@
 import React from 'react'
-import { Searchbar } from './Searchbar'
+import { Searchform } from '../components'
 
 export const Nav = () => {
   return (
-    <div className="Nav">
-      <Searchbar />
-      <h4>This will containt the navigation buttons</h4>
+    <div >
+      <Searchform />
+      <h4>This will contain the navigation buttons</h4>
     </div>
   )
 }
