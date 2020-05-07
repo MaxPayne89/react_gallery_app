@@ -1,12 +1,11 @@
 import React from 'react'
-import {Nav} from '../components'
+import {Nav, Searchform} from '../components'
 
 export const Header = () => {
   return (
   <header>
-    <ul className="main-nav">
+      <Searchform />
       <Nav />
-    </ul>    
   </header>
   )
 }
