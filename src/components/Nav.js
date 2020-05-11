@@ -1,20 +1,20 @@
 import React from 'react'
-import { NavButton } from './NavButton'
+import { Link } from 'react-router-dom'
 
 export const Nav = () => {
   return (
-    <div className="main-nav" >
+    <nav className="main-nav" >
       <ul>
         <li>
-          <NavButton queryUrl="dogs" />
+          <Link to="/dogs" >Dogs</Link>
         </li>
         <li>
-          <NavButton queryUrl="cats" />
+          <Link to="/tigerking" >Tiger King</Link>
         </li>
         <li>
-          <NavButton queryUrl="dinosaurs" />
+          <Link to="/cats" >Cats</Link>
         </li>
       </ul>
-    </div>
+    </nav>
   )
 }

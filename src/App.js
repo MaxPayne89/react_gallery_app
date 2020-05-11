@@ -5,18 +5,21 @@ import {Header, Photos} from './components'
 
 export const App = () => {
   return (
-    <DataWrapper>
+      <div className="container">
         <Router>
-          <Switch>
+          <Header />
 
+          <Switch>
             <Route exact path="/">
-              <Header />
               <Photos />
             </Route>
 
+            <Route path="/:search">
+              <Photos />
+            </Route>
           </Switch>
         </Router>
-      </DataWrapper>
+        </div>
   )
 }
 
