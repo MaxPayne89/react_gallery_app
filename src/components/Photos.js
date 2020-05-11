@@ -1,27 +1,37 @@
-import React, {useState, useEffect, useReducer} from 'react'
+import React, {useState, useEffect } from 'react'
 import * as axios from 'axios'
 import {Photo} from '../components'
 import { Loading } from './Loading'
 import {Error} from './Error'
 import { NotFound } from './NotFound'
 import apiKey from '../config'
-import { useFetchPhotos } from '../hooks/useFetchPhotos'
 import { useParams } from 'react-router-dom'
 
 export const Photos = () => {
   let { search } = useParams()
+  const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
 
-  
-
-
-  const [{data, isLoading, isError}, setUrl] = useFetchPhotos(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${search}&per_page=24&format=json&nojsoncallback=1`,[]) 
-  //setUrl(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${search}&per_page=24&format=json&nojsoncallback=1`)
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      try {
+        const result = await axios(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${search}&per_page=24&format=json&nojsoncallback=1`)
+        setData(result.data.photos.photo)
+        setIsLoading(false)
+      } catch(error) {
+        setIsError(true)
+        setIsLoading(false)
+      }
+    }
+    fetchPhotos()
+  },[search])
 
   return isLoading ? (
     <Loading />
   ) : isError ? (
     <Error />
-  ) : data ?
+  ) : data.length > 0 ?
   (
     <div className="photo-container">
       <ul>
