@@ -7,7 +7,10 @@ export const Searchform = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    //redirect by pushing the url to the history api
     history.push(`/${ref.current.value}`)
+    //reset the search bar
+    ref.current.value = ''
   }
 
   return (

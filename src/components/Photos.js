@@ -8,12 +8,14 @@ import apiKey from '../config'
 import { useParams } from 'react-router-dom'
 
 export const Photos = () => {
+  //making use of the hooks provided by react and react-router
   let { search } = useParams()
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
   useEffect(() => {
+    //async function which will fetch the data based on the search term
     const fetchPhotos = async () => {
       try {
         const result = await axios(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${search}&per_page=24&format=json&nojsoncallback=1`)
